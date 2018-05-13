@@ -4,7 +4,7 @@
     <groupId>com.javazx</groupId>
     <artifactId>dataSync</artifactId>
     <packaging>war</packaging>
-    <version>1.0T</version>
+    <version>1.0</version>
     <name>dataSync Maven Webapp</name>
     <url>http://maven.apache.org</url>
     <properties>
