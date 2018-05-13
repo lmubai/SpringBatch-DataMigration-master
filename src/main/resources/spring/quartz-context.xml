@@ -1,31 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-        					http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
-	default-autowire="byName" default-init-method="init">
-	<import resource="classpath:quartz/user-quartz-context.xml" />
-	<bean id="applicationContextUtil" class="com.ksource.batch.quartz.ApplicationContextUtil" />
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+       default-autowire="byName" default-init-method="init">
 
-	<bean id="quartzSchedulerFactoryBean"
-		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
-		<property name="jobDetails">
-			<list>
-				 <!--<ref bean="userJobDetail" />-->
-			</list>
-		</property>
+    <import resource="classpath:quartz/*-quartz-context.xml"/>
+    <bean id="applicationContextUtil" class="com.ksource.batch.quartz.ApplicationContextUtil"/>
 
-		<property name="triggers">
-			<list>
-				 <!--<ref bean="userCronTrigger" />-->
-			</list>
-		</property>
+    <bean id="quartzSchedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="jobDetails">
+            <list>
+                <!--<ref bean="userJobTestDetail" />-->
+            </list>
+        </property>
 
-		<property name="quartzProperties">
-			<props>
-				<prop key="org.quartz.jobStore.class">org.quartz.simpl.RAMJobStore</prop>
-			</props>
-		</property>
-	</bean>
+        <property name="triggers">
+            <list>
+                <ref bean="userTestCronTrigger"/>
+            </list>
+        </property>
+
+        <property name="quartzProperties">
+            <props>
+                <prop key="org.quartz.jobStore.class">org.quartz.simpl.RAMJobStore</prop>
+            </props>
+        </property>
+    </bean>
 
 </beans>

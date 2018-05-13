@@ -6,8 +6,8 @@
 
     <bean id="userBatchTestJob" class="com.ksource.batch.job.UserBatchTestJob">
         <property name="jobName" value="userBatchJobTestName"/>
-        <property name="jobLocator" ref="jobRegistry"/>
         <property name="jobLauncher" ref="jobLauncher"/>
+        <property name="jobLocator" ref="jobRegistry"/>
     </bean>
 
     <bean name="userJobTestDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
@@ -22,8 +22,9 @@
     </bean>
 
     <!-- Run the job every 1 minute 0 0/1 * * * ? 0 0 1 * * ? -->
-    <bean id="userTestCronTrigger" class="com.ksource.batch.quartz.trigger.UserCronTriggerFactoryBean">
-        <constructor-arg index="0" value="userJobTestDetail"/>
-        <constructor-arg index="1" value="0 */1 * * * ?"/>
+    <bean id="userTestCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="userJobTestDetail"/>
+        <property name="cronExpression" value="0 */1 * * * ?"/>
+        <property name="startDelay" value="3000"/>
     </bean>
 </beans>

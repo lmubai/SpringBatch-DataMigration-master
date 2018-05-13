@@ -23,9 +23,9 @@
 
     <!-- Actual Job -->
     <batch:job id="userBatchJobTestName" restartable="true">
-        <batch:step id="userStep">
+        <batch:step id="userTestStep">
             <batch:tasklet allow-start-if-complete="false" start-limit="1" task-executor="taskExecutor" throttle-limit="5">
-                <batch:chunk reader="userReader" writer="userWriter" processor="userProcessor" commit-interval="600" retry-limit="5">
+                <batch:chunk reader="userReader" writer="userWriter" processor="userProcessor" commit-interval="1" retry-limit="5">
                     <batch:retryable-exception-classes>
                         <batch:include class="org.springframework.dao.DuplicateKeyException"/>
                         <batch:include class="java.sql.BatchUpdateException"/>
