@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Reader数据源 -->
+    <bean id="readerDruidDataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
+          destroy-method="close">
+        <property name="url" value="${Reader.url}"/>
+        <property name="username" value="${Reader.username}"/>
+        <property name="password" value="${Reader.password}"/>
+        <property name="filters" value="${Reader.filters}"/>
+        <property name="maxActive" value="${Reader.maxActive}"/>
+        <property name="initialSize" value="${Reader.initialSize}"/>
+        <property name="maxWait" value="${Reader.maxWait}"/>
+        <property name="minIdle" value="${Reader.minIdle}"/>
+        <property name="timeBetweenEvictionRunsMillis" value="${Reader.timeBetweenEvictionRunsMillis}"/>
+        <property name="minEvictableIdleTimeMillis" value="${Reader.minEvictableIdleTimeMillis}"/>
+        <property name="validationQuery" value="${Reader.validationQuery}"/>
+        <property name="testWhileIdle" value="${Reader.testWhileIdle}"/>
+        <property name="testOnBorrow" value="${Reader.testOnBorrow}"/>
+        <property name="testOnReturn" value="${Reader.testOnReturn}"/>
+        <property name="poolPreparedStatements" value="${Reader.poolPreparedStatements}"/>
+        <property name="maxPoolPreparedStatementPerConnectionSize"
+                  value="${Reader.maxPoolPreparedStatementPerConnectionSize}"/>
+    </bean>
+
+    <!-- Writer数据源 -->
+    <bean id="writerDruidDataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
+          destroy-method="close">
+        <property name="url" value="${Writer.url}"/>
+        <property name="username" value="${Writer.username}"/>
+        <property name="password" value="${Writer.password}"/>
+        <property name="filters" value="${Writer.filters}"/>
+        <property name="maxActive" value="${Writer.maxActive}"/>
+        <property name="initialSize" value="${Writer.initialSize}"/>
+        <property name="maxWait" value="${Writer.maxWait}"/>
+        <property name="minIdle" value="${Writer.minIdle}"/>
+        <property name="timeBetweenEvictionRunsMillis" value="${Writer.timeBetweenEvictionRunsMillis}"/>
+        <property name="minEvictableIdleTimeMillis" value="${Writer.minEvictableIdleTimeMillis}"/>
+        <property name="validationQuery" value="${Writer.validationQuery}"/>
+        <property name="testWhileIdle" value="${Writer.testWhileIdle}"/>
+        <property name="testOnBorrow" value="${Writer.testOnBorrow}"/>
+        <property name="testOnReturn" value="${Writer.testOnReturn}"/>
+        <property name="poolPreparedStatements" value="${Writer.poolPreparedStatements}"/>
+        <property name="maxPoolPreparedStatementPerConnectionSize"
+                  value="${Writer.maxPoolPreparedStatementPerConnectionSize}"/>
+    </bean>
+
+    <!-- data_rep数据源 -->
+    <bean id="dataRepDruidDataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
+          destroy-method="close">
+        <property name="url" value="${data_rep.url}"/>
+        <property name="username" value="${data_rep.username}"/>
+        <property name="password" value="${data_rep.password}"/>
+        <property name="filters" value="${data_rep.filters}"/>
+        <property name="maxActive" value="${data_rep.maxActive}"/>
+        <property name="initialSize" value="${data_rep.initialSize}"/>
+        <property name="maxWait" value="${data_rep.maxWait}"/>
+        <property name="minIdle" value="${data_rep.minIdle}"/>
+        <property name="timeBetweenEvictionRunsMillis" value="${data_rep.timeBetweenEvictionRunsMillis}"/>
+        <property name="minEvictableIdleTimeMillis" value="${data_rep.minEvictableIdleTimeMillis}"/>
+        <property name="validationQuery" value="${data_rep.validationQuery}"/>
+        <property name="testWhileIdle" value="${data_rep.testWhileIdle}"/>
+        <property name="testOnBorrow" value="${data_rep.testOnBorrow}"/>
+        <property name="testOnReturn" value="${data_rep.testOnReturn}"/>
+        <property name="poolPreparedStatements" value="${data_rep.poolPreparedStatements}"/>
+        <property name="maxPoolPreparedStatementPerConnectionSize"
+                  value="${data_rep.maxPoolPreparedStatementPerConnectionSize}"/>
+    </bean>
+
+</beans>

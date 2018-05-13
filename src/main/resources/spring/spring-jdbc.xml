@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="readerDruidDataSource"/>
+    </bean>
+
+    <!-- reader sqlSessionFactory -->
+    <bean id="sqlSessionFactoryReader" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="readerDruidDataSource"/>
+        <property name="mapperLocations" value="classpath:sqlmap/writer/*.xml"/>
+    </bean>
+
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryReader"/>
+        <property name="basePackage" value="com.ksource.batch.dao.reader"/>
+    </bean>
+
+    <!-- writer sqlSessionFactory -->
+    <bean id="sqlSessionFactoryWriter" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="writerDruidDataSource"/>
+        <property name="configLocation" value="WEB-INF/sqlMapConfig.xml"/>
+        <property name="mapperLocations" value="classpath:sqlmap/reader/*.xml"/>
+    </bean>
+
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryWriter"/>
+        <property name="basePackage" value="com.ksource.batch.dao.writer"/>
+    </bean>
+
+</beans>
